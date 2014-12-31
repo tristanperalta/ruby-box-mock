@@ -1,11 +1,29 @@
 module RubyBox
   module Mock
-    class Folder < Item
+    class Folder
+      include WebMock::API
+
+      def initialize
+        @fixtures_path = Pathname.new('fixtures')
+      end
+
+      def fixture
+        ::File.read(@fixtures_path.join('folder.json'))
+      end
+
+      def endpoint
+        "#{RubyBox::API_URL}/folders"
+      end
+
       def stub_folder_requests
-        path = Pathname.new('fixtures')
-        raw_response = ::File.read(path.join('folder.json'))
-        stub_request(:get, "#{RubyBox::API_URL}/folders").
-          to_return(status: 200, body: raw_response)
+        stub_request(:get, endpoint).
+          to_return(status: 200, body: fixture)
+      end
+
+      def stub_post_folder_request
+        stub_request(:post, endpoint).
+          with(body: /.*/).
+          to_return(status: 202, body: fixture)
       end
     end
   end
