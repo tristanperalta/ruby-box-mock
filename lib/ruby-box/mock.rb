@@ -5,9 +5,7 @@ require "ruby-box/mock/folder"
 
 module RubyBox
   module Mock
-    API_URL = 'https://api.box.com/2.0/'
-
-    def self.folder(id)
+    def self.stub_folders_request
       path = Pathname.new('fixtures')
       ::File.read(path.join('folder.json'))
     end
