@@ -1,7 +1,15 @@
+require "ruby-box"
 require "ruby-box/mock/version"
+require "ruby-box/mock/item"
+require "ruby-box/mock/folder"
 
 module RubyBox
   module Mock
-    # Your code goes here...
+    API_URL = 'https://api.box.com/2.0/'
+
+    def self.folder(id)
+      path = Pathname.new('fixtures')
+      ::File.read(path.join('folder.json'))
+    end
   end
 end
