@@ -24,6 +24,15 @@ describe RubyBox::Mock::Folder do
       json = JSON.parse(json)
       expect(json['type']).to eq 'folder'
     end
+
+    it "returns mock request with folder_id" do
+      subject.stub_folder_requests(1111)
+      uri = URI("#{RubyBox::API_URL}/folders/1")
+      response = request(:get, uri)
+      json = response.body
+      json = JSON.parse(json)
+      expect(json['type']).to eq 'folder'
+    end
   end
 
   describe "#stub_post_folder_request" do

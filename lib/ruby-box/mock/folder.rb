@@ -16,7 +16,8 @@ module RubyBox
       end
 
       def stub_folder_requests
-        stub_request(:get, endpoint).
+        pattern = /#{endpoint}\/?\d*/
+        stub_request(:get, pattern).
           to_return(status: 200, body: fixture)
       end
 
