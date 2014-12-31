@@ -4,7 +4,8 @@ module RubyBox
       include WebMock::API
 
       def initialize
-        @fixtures_path = Pathname.new('fixtures')
+        @fixtures_path =
+          Pathname.new(::File.expand_path('../../../../fixtures', __FILE__))
       end
 
       def fixture

@@ -26,7 +26,7 @@ describe RubyBox::Mock::Folder do
     end
 
     it "returns mock request with folder_id" do
-      subject.stub_folder_requests(1111)
+      subject.stub_folder_requests
       uri = URI("#{RubyBox::API_URL}/folders/1")
       response = request(:get, uri)
       json = response.body
