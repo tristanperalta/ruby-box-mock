@@ -2,9 +2,10 @@ require 'ruby-box/mock'
 require 'json'
 
 describe RubyBox::Mock do
-  describe '.folder' do
+  describe '.stub_folder_requests' do
     it "returns a mock response" do
-      json = RubyBox::Mock.folder(1)
+      pending
+      json = RubyBox::Mock.stub_folder_requests
       json = JSON.parse(json)
       expect(json['type']).to eq 'folder'
     end

@@ -1,6 +1,8 @@
 module RubyBox
   module Mock
     class Item < RubyBox::Item
+      include WebMock::API
+
       def initialize(raw_item)
         @raw_item = raw_item
         @session = RubyBox::Session.new
