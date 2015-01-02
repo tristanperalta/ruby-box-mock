@@ -12,3 +12,5 @@ module RubyBox
     end
   end
 end
+
+WebMock.allow_net_connect! if defined?(Rails) && !Rails.env.test?
